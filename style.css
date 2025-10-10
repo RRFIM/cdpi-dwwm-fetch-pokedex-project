@@ -1,0 +1,46 @@
+body {
+    margin: 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: red;
+
+}
+
+.poke-item {
+    border-style: double;
+    display: flex;
+    flex-direction: auto;
+    align-items: center;
+    background-color: rgb(63, 63, 51);
+    justify-content: space-between;
+}
+
+.poke-item-text {
+    display: flex;
+    justify-content: space-between;
+}
+
+.poke-image {
+    height: 4rem;
+}
+
+.poke-research {
+    display: flex;
+
+}
+.poke-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.poke-info {
+    .poke-image {
+        height: 23rem;
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
