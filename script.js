@@ -2,6 +2,7 @@ function main()
 {
     handleLeftPanel();
     handleRightPanel();
+    Evolutions();
 }
 
 
@@ -12,7 +13,7 @@ function handleRightPanel() {
     const PokeName_elem = document.body.querySelector(".poke-name")
     const PokeId_elem = document.body.querySelector(".poke-id")
     const PokeTemplateType_elem = document.body.querySelector(".poke-template-types") 
-    PokeInput_elem.addEventListener("change", function () {
+    PokeInput_elem.addEventListener("change", function() {
         fetch("https://pokebuildapi.fr/api/v1/pokemon/" + PokeInput_elem.value).then(res => res.json())
         .then(data => {
             //Ballies
@@ -27,7 +28,6 @@ function handleRightPanel() {
 
             UserTypes.forEach(UserType_obj => {
                 const PokeType = PokeTemplateType_elem.content.cloneNode(true)
-                console.log(PokeType)
                 PokeType.querySelector(".poke-type").setAttribute("src", UserType_obj.image)
 
                 PokeInfo.appendChild(PokeType)
@@ -54,28 +54,25 @@ function handleLeftPanel()
     })
 }
 
-
-
-
-function Types()
-{
-    const PokeTypeAPI = data.apiTypes
-    const PokeTypes = document.querySelector(".poke-types")
-    PokeTypes.innerHTML = "";
-    PokeTypeAPI.forEach(PokeType_Obj => {
-        const PokeTypes = document.querySelector(".poke-types")
-        const PokeTemplateType = document.querySelector(".poke-template-type")
-        const PokeType = PokeTemplateType.content.cloneNode(true)
-        
-        PokeType.querySelector(".poke-type-icon").setAttribute("src", PokeType_Obj.image)
-            
-        PokeTypes.appendChild(PokeType)
-    })
-}
-
 function Evolutions()
 {
-
+    const PokeEvolutions = document.querySelector("poke-evolution")
+    const PokeTemplateEvolution = document.querySelector(".poke-evolution-template") 
+    const PokeInput_elem = document.body.querySelector(".poke-search")
+    PokeInput_elem.addEventListener("change", function() {
+        fetch("https://pokebuildapi.fr/api/v1/pokemon/" + PokeInput_elem.value).then(res => res.json())
+        .then(dataEvolution => {       
+            const PokeEvolutionItem = dataEvolution.apiEvolutions
+            PokeEvolutionItem.forEach(PokeEvolution_obj => {
+                const PokeEvolution = PokeTemplateEvolution.content.cloneNode(true)
+                PokeEvolution.querySelector(".poke-next-name").textContent = PokeEvolution_obj.name
+                PokeEvolution.querySelector(".poke-next-id").textContent = PokeEvolution_obj.pokedexId
+                PokeEvolution.querySelector(".poke-next-image").setAttribute("src", dataEvolution.image+1)
+    
+                PokeEvolutions.appendChild(PokeEvolution)
+            })
+        })
+    })
 }
 
     
