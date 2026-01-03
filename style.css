@@ -36,11 +36,20 @@ body {
 }
 
 .poke-info {
-    .poke-image {
-        height: 23rem;
+    .upper
+    {
+        .poke-image {
+            height: 23rem;
+        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
+
+.poke-type {
+
+}
+
+
